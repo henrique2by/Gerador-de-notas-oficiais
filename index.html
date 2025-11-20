@@ -1,34 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Nota Oficial</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h2>Formulário para Nota Oficial</h2>
-        <form id="notaForm">
-            <label for="department">Departamento:</label>
-            <input type="text" id="department" required>
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtém o elemento do formulário
+    const form = document.getElementById('notaForm');
+    
+    // Adiciona o listener para quando o formulário é submetido
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Impede o envio padrão do formulário
 
-            <label for="recipient">Destinatário:</label>
-            <input type="text" id="recipient" required>
+        // O elemento que será convertido em PDF (neste caso, o próprio formulário)
+        const input = document.getElementById('notaForm');
 
-            <label for="subject">Assunto:</label>
-            <input type="text" id="subject" required>
+        // Configurações e chamada do html2canvas
+        // scale: 2 é usado para melhorar a qualidade da imagem
+        html2canvas(input, { scale: 2 }).then(canvas => {
+            
+            // Instancia o objeto jsPDF usando a sintaxe de carregamento do CDN
+            // 'p' = portrait (vertical), 'mm' = milímetros, 'a4' = tamanho do papel
+            const doc = new window.jspdf.jsPDF('p', 'mm', 'a4'); 
 
-            <label for="body">Corpo:</label>
-            <textarea id="body" rows="10" required></textarea>
+            // Converte o canvas (imagem do formulário) para um formato de dados
+            const imgData = canvas.toDataURL('image/png');
+            
+            // Adiciona a imagem ao documento PDF
+            // (0, 0) são as coordenadas iniciais, e (210, 297) é o tamanho A4 em mm
+            doc.addImage(imgData, 'PNG', 0, 0, 210, 297); 
 
-            <button type="submit" id="generatePdf">Gerar PDF</button>
-        </form>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+            // Salva o ficheiro PDF
+            doc.save('nota_oficial.pdf');
+        });
+    });
+});
