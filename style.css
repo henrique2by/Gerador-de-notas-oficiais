@@ -1,0 +1,329 @@
+/* ========================
+   GLOBAL STYLES (AJUSTADO PARA ARIA)
+   ======================== */
+body {
+    /* Fonte alterada para Arial, conforme solicitado */
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; 
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo */
+    min-height: 100vh;
+    
+    /* Manter as configurações de impressão */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ========================
+   FORM CONTAINER (MODERNO)
+   ======================== */
+.container {
+    max-width: 850px; 
+    width: 95%;
+    margin: 40px auto; 
+    background: #fff;
+    padding: 0; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    border: 1px solid #ddd;
+}
+
+.container h2 {
+    margin: 0;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+form {
+    padding: 0 25px 25px 25px; 
+}
+
+form label {
+    display: block;
+    margin-top: 15px; 
+    font-weight: 600; 
+    color: #555;
+    font-size: 14px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px 0; 
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    border-radius: 0; 
+    font-size: 15px;
+    resize: none; 
+    transition: border-bottom-color 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-bottom: 2px solid #1a73e8; 
+    outline: none; 
+}
+
+/* ========================
+   TOOLBAR NOVO
+   ======================== */
+.toolbar {
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-bottom: none; /* Colamos na textarea para visual moderno */
+    border-radius: 4px 4px 0 0; 
+    background-color: #f9f9f9;
+}
+
+.toolbar button {
+    padding: 6px 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.2s;
+    /* Reset de estilos de botão do formulário */
+    margin-top: 0 !important; 
+    font-size: 14px;
+    color: #444;
+}
+
+.toolbar button:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+/* CAMPO CORPO DO TEXTO (#body) - AJUSTE + CAIXA MAIOR */
+#body {
+    border: 1px solid #ddd; 
+    min-height: 350px; 
+    padding: 15px;
+    font-size: 15px;
+    /* Grudar na toolbar e arredondar só embaixo */
+    border-radius: 0 0 4px 4px !important; 
+    margin-top: 0 !important; 
+    resize: vertical; 
+    transition: border-color 0.3s;
+}
+
+#body:focus {
+    border: 1px solid #1a73e8; 
+    border-radius: 0 0 4px 4px;
+}
+
+/* BOTÃO (ESTILO MODERNO) */
+form button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background-color: #800000; /* Cor que você estava usando */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form button:hover {
+    background-color: #a00000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================
+   PDF CONTENT
+   ======================== */
+#pdf-content {
+    display: none;
+    position: absolute;
+    left: -9999px;
+    width: 210mm;
+    height: 297mm;
+    background: #fff;
+    overflow: hidden;
+    padding: 20mm;
+    box-sizing: border-box;
+    color: #000;
+}
+
+/* ========================
+   HEADER
+   ======================== */
+.right-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3mm;
+    height: 100%;
+    background-color: #800000;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 25mm;
+    height: auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 1mm 0;
+    color: black;
+    text-transform: uppercase;
+}
+
+.department {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 1mm;
+    margin-bottom: 8mm;
+    color: black;
+}
+
+/* ========================
+   BODY TEXT & STRUCTURE
+   ======================== */
+.recipient {
+    font-size: 12pt;
+    
+    /* NOVO: Define um espaço após o bloco */
+    margin-bottom: 10mm; 
+    
+    white-space: pre-wrap;
+    font-weight: regular; /* Geralmente destinatário é em negrito */
+    color: #333;
+    
+    /* NOVO: POSICIONAMENTO PARA COMEÇAR NO MEIO */
+    /* Remove a margem superior e inferior, mas define a margem esquerda para posicionar. */
+    margin-left: 85mm; /* Distância para iniciar o texto no centro (105mm - 20mm de margem) */
+    width: 90mm; /* Limita a largura do bloco para que o texto não se estenda muito */
+
+    /* Alinhamento do TEXTO DENTRO do bloco (LEFT é o alinhamento normal) */
+    text-align: left; 
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff8f7;
+    padding: 4mm 4mm;
+    margin-bottom: 6mm;
+    font-size: 10pt;
+    font-weight: normal;
+    border-radius: 2mm;
+}
+
+.assunto-label {
+    color: dark;
+    font-weight: regular;
+    font-size: 12pt;
+    
+    /* NOVO: Faz com que a label e o subject fiquem na mesma linha */
+    display: inline-block; 
+    margin-right: 1mm; /* Espaço entre a label "Assunto:" e o texto do assunto */
+}
+
+.subject-box {
+    /* NOVO: Faz com que a caixa do assunto continue na mesma linha que a label */
+    display: inline; 
+    
+    background-color: transparent; 
+    padding: 0; 
+    margin-bottom: 5mm; 
+    border-radius: 0;
+}
+
+.subject-box .subject {
+    /* Mantém o estilo do texto do assunto */
+    color: dark;
+    font-size: 12pt;
+    font-weight: bold;
+    
+    /* Importante para display: inline: remove o display: block anterior */
+    display: inline; 
+    margin: 0;
+}
+
+.body-text {
+    font-size: 12pt;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    margin-bottom: 25mm;
+    text-align: justify;
+}
+
+/* ========================
+   BACKGROUND ELEMENTS
+   ======================== */
+.cafe {
+    position: absolute;
+    bottom: 40mm;
+    left: -50mm;
+    width: 185mm;
+    height: auto;
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ========================
+   FOOTER
+   ======================== */
+.footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 20mm;
+    width: calc(100% - 40mm);
+    display: flex;
+    /* MUDANÇA: Alinha todos os itens agrupados no final (canto direito) */
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.address {
+    /* NOVO: Adiciona um pequeno espaço entre o endereço e o QR Code */
+    margin-right: 5mm; 
+    
+    font-size: 8pt;
+    color: #800000;
+    text-align: right;
+    line-height: 1.3;
+}
+
+.qrcode {
+    width: 18mm;
+    height: 18mm;
+}
+
+/* ========================
+   PRINT SPECIFIC
+   ======================== */
+@media print {
+    body {
+        background: #fff !important;
+    }
+    .container {
+        display: none !important;
+    }
+    #pdf-content {
+        display: block !important;
+        position: relative !important;
+        left: 0;
+        box-shadow: none;
+    }
+}
